@@ -68,9 +68,56 @@ public class Logic {
         return rst;
     }
 
+   public boolean checkHorizontal(int[][] horizont, int row) {
+        boolean result = false;
+        horizont = convert();
+       for (int index = 0; index < horizont.length; index++) {
+           if (horizont [row][index] != 1) {
+               result = true;
+           }
+
+       }
+       return result;
+   }
+
+   public boolean checkVertical(int[][] vertical, int cell) {
+        boolean result = false;
+        vertical = convert();
+       for (int index = 0; index < vertical.length; index++) {
+           if (vertical[cell][index] != 1) {
+               result = true;
+           }
+
+       }
+       return result;
+   }
+
+   public int[] viaDiagonal(int[][] diagonal) {
+        diagonal = convert();
+        int[] result = new int[diagonal.length];
+       for (int index = 0; index < diagonal.length; index++) {
+           result[index] = diagonal[index][index];
+
+       }
+       return result;
+   }
+
+
+  //   }
+
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for(int index = 0; index < table.length; index++) {
+            if(table[index][index] != 1) {
+                if (checkHorizontal(table, index) || checkHorizontal(table, index))
+                result = true;
+                break;
+
+            }
+
+        }
+
         return result;
     }
 
