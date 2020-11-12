@@ -34,14 +34,14 @@ public class Logic {
          {
             for (int i = 0; i != this.figures.length ; i++) { // проход по массиву с фигурами
                 for (int j = 0; j != steps.length; j++) {     // проход по массиву пути движения фигуры?
-                    if (this.figures[index] != null && this.figures[index].position().equals(steps)){
-                        return true;
+                    if (this.figures[i] != null && this.figures[i].position().equals(steps[j])){
+                        return false;
                     } // проверка this.figures[index] != null в ячейке есть фигура
                 }     // проверка this.figures[index].position().equals(steps) на пути движения нет фигур?
             }
 
          }
-        return false;
+        return true;
     }
 
     public void clean() {
