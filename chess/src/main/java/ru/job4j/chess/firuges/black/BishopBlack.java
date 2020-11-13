@@ -28,13 +28,14 @@ public class BishopBlack implements Figure {
         int size = Math.abs(dest.getX() - source.getX()); //путь на единицу короче, это понимаю, потому что
                                                               //в индекс массива начинается с 0?
         Cell[] steps = new Cell[size]; // создаем новый массив размера сайз
-        int deltaX = dest.getX() - source.getX(); // вычисляем разницу по Х.
-        int deltaY = dest.getY() - source.getY(); // разницу по Y
+        int deltaX = (dest.getX() - source.getX()) > 0 ? 1 : -1; // вычисляем разницу по Х.
+        int deltaY = (dest.getY() - source.getY()) > 0 ? 1 : -1; // разницу по Y
         int x = source.getX(); // начальная точка пути по Х
         int y = source.getY(); // начальная по Y
-        x = x + deltaX > 0 ? 1 : -1; // source.getX() +1 или -1
-        y = y + deltaY > 0 ? 1 : -1; // source.getY() +1 или -1
+
         for (int index = 0; index < size; index++) { // Почему идем до size, а не по steps.length?
+            x += deltaX;
+            y += deltaY;
 
             steps[index] = Cell.findBy(x,y) ;// Вычисляем (Cell.findBy()) значение ячейки - С1, С3 и т.д. Так?
         }
@@ -42,8 +43,8 @@ public class BishopBlack implements Figure {
     }
 
     public boolean isDiagonal(Cell source, Cell dest) {
-        return Math.abs(dest.getX()) != Math.abs(source.getX()) &&
-                Math.abs(dest.getY()) != Math.abs(source.getY());
+        return Math.abs(dest.getX() - source.getX()) ==
+                Math.abs(dest.getY() - source.getY());
     }
 
     @Override
