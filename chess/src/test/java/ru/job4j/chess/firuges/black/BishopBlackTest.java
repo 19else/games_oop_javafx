@@ -48,6 +48,7 @@ public class BishopBlackTest {
     public void testIsWay() throws ImpossibleMoveException {
         BishopBlack black = new BishopBlack(Cell.C1);
         System.out.println(Arrays.toString(black.way(Cell.C1, Cell.G5)));
-      // assertThat(black.way(Cell.C1, Cell.G5), is());
+        Cell[] rsl = new Cell[] {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
+        assertThat(black.way(Cell.C1, Cell.G5), is(rsl));
     }
 }
