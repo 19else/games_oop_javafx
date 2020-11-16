@@ -30,7 +30,7 @@ public class Logic {
         this.figures[index] = this.figures[index].copy(dest);
     }
 
-    private boolean isFree(Cell[] steps) {
+    private boolean isFree(Cell[] steps)  {
          {
             for (int i = 0; i != this.figures.length ; i++) { // проход по массиву с фигурами
                 for (int j = 0; j != steps.length; j++) {     // проход по массиву пути движения фигуры?
@@ -39,7 +39,6 @@ public class Logic {
                     } // проверка this.figures[index] != null в ячейке есть фигура
                 }     // проверка this.figures[index].position().equals(steps) на пути движения нет фигур?
             }
-
          }
         return true;
     }
